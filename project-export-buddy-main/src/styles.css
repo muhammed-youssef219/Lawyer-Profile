@@ -1,0 +1,143 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system: مكتب محاماة — أسود وذهبي
+ * كل الألوان tokens في :root، ممنوع ألوان hardcoded في الكومبوننتس.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-deep: var(--gold-deep);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --font-display: "Amiri", "Tajawal", serif;
+  --font-sans: "Tajawal", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --background: oklch(0.14 0.004 90);
+  --foreground: oklch(0.94 0.006 90);
+
+  --surface: oklch(0.18 0.006 90);
+  --surface-2: oklch(0.22 0.008 90);
+
+  --card: oklch(0.18 0.006 90);
+  --card-foreground: oklch(0.94 0.006 90);
+  --popover: oklch(0.18 0.006 90);
+  --popover-foreground: oklch(0.94 0.006 90);
+
+  --gold: oklch(0.78 0.115 85);
+  --gold-soft: oklch(0.88 0.07 88);
+  --gold-deep: oklch(0.55 0.09 78);
+
+  --primary: oklch(0.78 0.115 85);
+  --primary-foreground: oklch(0.14 0.004 90);
+  --secondary: oklch(0.22 0.008 90);
+  --secondary-foreground: oklch(0.94 0.006 90);
+  --muted: oklch(0.22 0.008 90);
+  --muted-foreground: oklch(0.68 0.008 90);
+  --accent: oklch(0.24 0.02 85);
+  --accent-foreground: oklch(0.88 0.07 88);
+  --destructive: oklch(0.58 0.19 27);
+  --destructive-foreground: oklch(0.96 0.01 90);
+
+  --border: oklch(0.32 0.02 85 / 45%);
+  --input: oklch(0.32 0.02 85 / 55%);
+  --ring: oklch(0.78 0.115 85);
+}
+
+.dark {
+  --background: oklch(0.14 0.004 90);
+  --foreground: oklch(0.94 0.006 90);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--background);
+  }
+}
+
+@utility gold-line {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-deep),
+    var(--gold),
+    var(--gold-deep),
+    transparent
+  );
+}
+
+@utility gold-text {
+  background-image: linear-gradient(
+    100deg,
+    var(--gold-deep),
+    var(--gold-soft),
+    var(--gold)
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@utility pattern-grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
